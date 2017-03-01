@@ -37,4 +37,7 @@
     <Compile Include="Puzzle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="text.txt" />
+  </ItemGroup>
 </Project>
