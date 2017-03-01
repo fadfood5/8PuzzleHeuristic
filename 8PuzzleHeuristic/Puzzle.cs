@@ -5,12 +5,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace PuzzleHeuristic{
-	public class Spot{
+	public class Tile{
 		public int x;
 		public int y;
 		public int w;
 
-		public Spot(int a, int b, int c){
+		public Tile(int a, int b, int c){
 			x = a;
 			y = b;
 			w = c;
@@ -18,30 +18,66 @@ namespace PuzzleHeuristic{
 	}
 
 	public class Puzzle{
-		//Instantiate list of nodes and number of vertices
-		List<Spot> list;
+		//Instantiate list of tiles and number of displaced tiles
+		List<Tile> list;
+		int displacedTiles = 0;
+		int loops = 0;
 
 		public Puzzle(int v, int w){
 
-			//Create number of Spots according to input
-			list = new List<Spot>();
+			//Create number of tiles according to input
+			list = new List<Tile>();
 			/*
 			for (int i = 0; i < v; i++)
 				for (int j = 0; j < w; j++) {
-					list.Add(new Spot (i, j));
+					list.Add(new Tile (i, j));
 					Console.WriteLine ("I: " + i);
 					Console.WriteLine ("J: " + j);
 				}*/
 		}
 
-		public void addSpot(int i, int j, int wgt){
+		public void addTile(int i, int j, int wgt){
 
-			//Create Spot Object
-			Spot sp = new Spot(i, j, wgt);
+			//Create Tile Object
+			Tile sp = new Tile(i, j, wgt);
 			//Add spot to Puzzle array
 			list.Add(sp);
 
 			Console.WriteLine("Added edge to vertex: (" + i + ", " + j + ") with weight " + wgt);
+		}
+
+		public void printTiles(){
+			int count = 0;
+			foreach(Tile item in list){
+				if (count == 3) {
+					Console.Write ("\n");
+					count = 0;
+				}
+				Console.Write (item.w + " ");
+				count++;
+
+			}
+		}
+
+		public void search(){
+			List<Tile> openList = new List<Tile> {list[0]};
+			List<Tile> closedList = new List<Tile>();
+
+			while (openList.Count > 0) {
+				loops++;
+
+
+				Tile currentTile = openList.First();
+
+				openList.Remove(currentTile);
+				closedList.Add(currentTile);
+
+				//if (successor.w == 8)
+					//break;
+					//        successor.g = q.g + distance between successor and q
+					//        successor.h = distance from goal to successor
+					//        successor.f = successor.g + successor.h
+			}
 		}
 
 		public static void Main(string[] args){
@@ -55,7 +91,7 @@ namespace PuzzleHeuristic{
 			System.IO.StreamReader file = new System.IO.StreamReader("../../" + b + ".txt");
 			List<string> lines = new List<string> ();
 			while((line = file.ReadLine()) != null){
-				Console.WriteLine ("Line " + counter + ": " + line);
+				//Console.WriteLine ("Line " + counter + ": " + line);
 				lines.Add (line);
 				counter++;
 			}
@@ -64,14 +100,15 @@ namespace PuzzleHeuristic{
 			int count2 = 0;
 			foreach(string words in lines){
 				string[] w = words.Split(' ');
-				p.addSpot (count1, count2, Int32.Parse(w[0]));
+				p.addTile (count1, count2, Int32.Parse(w[0]));
 				count2++;
-				p.addSpot (count1, count2, Int32.Parse(w[1]));
+				p.addTile (count1, count2, Int32.Parse(w[1]));
 				count2++;
-				p.addSpot (count1, count2, Int32.Parse(w[2]));
+				p.addTile (count1, count2, Int32.Parse(w[2]));
 				count2 = 0;
 				count1++;
 			}
+			p.printTiles ();
 
 			file.Close();
 
