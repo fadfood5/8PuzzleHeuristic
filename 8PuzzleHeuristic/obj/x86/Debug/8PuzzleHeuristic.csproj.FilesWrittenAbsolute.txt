@@ -1,0 +1,5 @@
+/Users/Fadi/Desktop/8PuzzleHeuristic/8PuzzleHeuristic/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Fadi/Desktop/8PuzzleHeuristic/8PuzzleHeuristic/bin/Debug/8PuzzleHeuristic.exe.mdb
+/Users/Fadi/Desktop/8PuzzleHeuristic/8PuzzleHeuristic/bin/Debug/8PuzzleHeuristic.exe
+/Users/Fadi/Desktop/8PuzzleHeuristic/8PuzzleHeuristic/obj/x86/Debug/8PuzzleHeuristic.exe
+/Users/Fadi/Desktop/8PuzzleHeuristic/8PuzzleHeuristic/obj/x86/Debug/8PuzzleHeuristic.exe.mdb
