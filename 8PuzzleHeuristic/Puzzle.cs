@@ -59,6 +59,34 @@ namespace PuzzleHeuristic{
 			}
 		}
 
+		public int findTile(Tile t){
+			int count = 0;
+			foreach (Tile index in list) {
+				if (index.w == list [count].w) {
+					return count;
+				}
+				count++;
+			}
+			return 0;
+		}
+
+		public void getAdjacent(Tile t){
+			int find = findTile (t);
+			int[] adj = new int[4];
+			//adj = [find+1, find, find-1, find];
+			adj[0] = find+1;
+			adj[1] = find;
+			adj[2] = find-1;
+			adj[3] = find;
+			foreach(int item in adj){
+				Console.Write (item + " ");
+			}
+		}
+
+		public void distance(){
+			
+		}
+
 		public void search(){
 			List<Tile> openList = new List<Tile> {list[0]};
 			List<Tile> closedList = new List<Tile>();
@@ -74,6 +102,7 @@ namespace PuzzleHeuristic{
 
 				//if (successor.w == 8)
 					//break;
+
 					//        successor.g = q.g + distance between successor and q
 					//        successor.h = distance from goal to successor
 					//        successor.f = successor.g + successor.h
@@ -108,7 +137,8 @@ namespace PuzzleHeuristic{
 				count2 = 0;
 				count1++;
 			}
-			p.printTiles ();
+			//p.printTiles ();
+			p.getAdjacent(p.list[5]);
 
 			file.Close();
 
